@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "112358ann/api"
+    dockerimagename = "evelynym/nodeproj"
     dockerImage = ""
   }
 
