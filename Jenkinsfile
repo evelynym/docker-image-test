@@ -13,9 +13,10 @@ pipeline {
     stage('Pushing Image') {
       steps{
         script {
-          docker.withRegistry( 'https://registry.hub.docker.com', 'dockerlogin' ) {
+          docker.withRegistry( 'https://registry.hub.docker.com', 'dockerlogin') {
             dockerImage.push()
           }
+        }
       }
     }
 
