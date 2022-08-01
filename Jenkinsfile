@@ -11,15 +11,11 @@ pipeline {
     }
 
     stage('Pushing Image') {
-      environment {
-          registryCredential = 'dockerlogin'
-      }
       steps{
         script {
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+          docker.withRegistry( 'https://registry.hub.docker.com', 'dockerlogin' ) {
             dockerImage.push()
           }
-        }
       }
     }
 
