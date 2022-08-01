@@ -1,10 +1,5 @@
 pipeline {
 
-  environment {
-    dockerimagename = "evelynym/nodeproj"
-    dockerImage = ""
-  }
-
   agent any
 
   stages {
