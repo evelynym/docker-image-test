@@ -17,7 +17,7 @@ pipeline {
 
     stage('Pushing Image') {
       environment {
-          registryCredential = 'dockerhublogin'
+          registryCredential = 'dockerlogin'
       }
       steps{
         script {
