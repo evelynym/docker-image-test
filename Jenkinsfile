@@ -1,4 +1,9 @@
 pipeline {
+    
+  environment {
+    registry = "evelynym/nodeproj"
+    registryCredential = 'dockerlogin'
+  }
 
   agent any
 
@@ -9,11 +14,18 @@ pipeline {
         git 'https://github.com/evelynym/docker-image-test.git'
       }
     }
-
-    stage('Pushing Image') {
+    
+    stage('Building image') {
       steps{
         script {
-          docker.withRegistry( 'https://registry.hub.docker.com', 'dockerlogin') {
+          dockerImage = docker.build registry + "latest"
+        }
+      }
+    }
+    stage('Deploy Image') {
+      steps{
+         script {
+            docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
           }
         }
