@@ -1,3 +1,5 @@
+
+   
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -12,24 +14,27 @@ spec:
   template:
     metadata:
       labels:
-        app: nodeproj
+        app: nodeproj 
     spec:
       containers:
-        - name: nodeproj
-          image: evelynym/nodeproj:latest
-          ports:
-            - containerPort: 3003
+      - name: nodeserver
+        image: evelynym/nodeproj:latest
+        ports:
+        - containerPort: 3003
+        
+        
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
   name: nodeproj-service
 spec:
   selector:
-    app: nodeproj
+    app: nodeproj 
   type: LoadBalancer
   ports:
-    - protocol: TCP
-      port: 5000
-      targetPort: 3003
-      nodePort: 31110
+  - protocol: TCP
+    port: 5000
+    targetPort: 3003
+    nodePort: 31110
